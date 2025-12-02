@@ -6,15 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SettingActivity">
 
-    <Button
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Setting"
-        android:textSize="40dp"
-        android:id="@+id/btnSetting"></Button>
+        android:gravity="center"
+        android:textSize="40dp"></TextView>
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner">
+
+    </Spinner>
 
 
 </LinearLayout>
