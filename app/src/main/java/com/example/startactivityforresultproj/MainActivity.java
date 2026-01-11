@@ -2,16 +2,20 @@ package com.example.startactivityforresultproj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnSetting;
     ActivityResultLauncher<Intent> resultLauncher;
@@ -26,5 +30,25 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        btnSetting=findViewById(R.id.btnSetting);
+        btnSetting.setOnClickListener(this);
+
+        resultLauncher=registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult o) {
+
+                    }
+                }
+        );
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(this, SettingActivity.class);
+        resultLauncher.launch(intent);
     }
 }
